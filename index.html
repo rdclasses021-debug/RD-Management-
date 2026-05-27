@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Summer Class 2026 — Schedule & Rules</title>
+    
+    <!-- User-requested Direct Favicon Link -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/dJJYjWSw/Gemini-Generated-Image-l22hn4l22hn4l22h.png">
+    <link rel="shortcut icon" type="image/png" href="https://i.ibb.co/dJJYjWSw/Gemini-Generated-Image-l22hn4l22hn4l22h.png">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Font (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Tailwind Configuration (Solid brand colors, NO Gradients) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#A594F9',     /* Elegant Solid Purple */
+                            secondary: '#CDC1FF',   /* Soft Solid Lavender */
+                            bgLight: '#E5D9F2',     /* Accent Light Lilac */
+                            accent: '#7D69E6',      /* Deep Slate Purple */
+                            dark: '#2A2830',        /* High-contrast Slate Text */
+                            muted: '#7E7A8A',       /* Subtle Gray */
+                            fineRed: '#E15560',     /* Safe Warning Red */
+                            cardBg: '#FFFFFF',      /* Flat Solid White */
+                            pageBg: '#F8F6FC'       /* Flat Clean Soft-Lilac Canvas */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Smooth state transitions */
+        .transition-clean {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Pure solid styling as requested - No Gradients, No ambient blurs */
+        body {
+            background-color: #F8F6FC;
+        }
+
+        /* Custom scrollbar to match the design style */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1EDF7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CDC1FF;
+            border-radius: 99px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #A594F9;
+        }
+
+        /* Solid active timetable highlighting state */
+        .active-row-solid {
+            background-color: #F4F1FA !important;
+            border-color: #A594F9 !important;
+        }
+
+        /* Premium Modal Slide-Up Transitions */
+        .modal-overlay {
+            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal-container {
+            transform: translateY(120%) scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .modal-active {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+        .modal-active .modal-container {
+            transform: translateY(0) scale(1) !important;
+        }
+
+        /* Premium Ambient Liquid Floating Animation */
+        @keyframes float-avatar {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(1deg); }
+        }
+        .animate-float {
+            animation: float-avatar 4s ease-in-out infinite;
+        }
+
+        /* HIGH-END ORGANIC LIQUID WAVE/RIPPLE ANIMATION */
+        @keyframes liquid-ripple {
+            0% {
+                border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+                transform: scale(0.85) rotate(0deg);
+                opacity: 0.9;
+            }
+            50% {
+                border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%;
+            }
+            100% {
+                border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+                transform: scale(1.6) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Morphing active state for the user's avatar border itself to look fluid */
+        @keyframes avatar-morph {
+            0%, 100% {
+                border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+            }
+            33% {
+                border-radius: 48% 52% 45% 55% / 50% 45% 55% 50%;
+            }
+            66% {
+                border-radius: 52% 48% 55% 45% / 45% 52% 48% 55%;
+            }
+        }
+        .liquid-avatar-border {
+            animation: avatar-morph 6s ease-in-out infinite;
+        }
+
+        /* Staggered high-fidelity wave emitters */
+        .animate-wave-1 {
+            animation: liquid-ripple 3.2s linear infinite;
+        }
+        .animate-wave-2 {
+            animation: liquid-ripple 3.2s linear infinite;
+            animation-delay: 1.07s;
+        }
+        .animate-wave-3 {
+            animation: liquid-ripple 3.2s linear infinite;
+            animation-delay: 2.13s;
+        }
+    </style>
+</head>
+<body class="text-brand-dark min-h-screen flex flex-col justify-between selection:bg-brand-secondary/40 selection:text-brand-dark font-sans antialiased overflow-x-hidden">
+
+    <!-- FLOATING TOP NAVIGATION BAR (Rounded, minimal capsule style) -->
+    <div class="sticky top-0 z-50 w-full px-4 pt-4">
+        <nav class="max-w-4xl mx-auto bg-white/95 backdrop-blur-md border border-[#E5D9F2] rounded-full px-4 sm:px-6 py-2.5 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <img src="https://i.ibb.co/dJJYjWSw/Gemini-Generated-Image-l22hn4l22hn4l22h.png" alt="RD Management Logo" class="w-7 h-7 rounded-full border border-brand-primary/30 object-cover">
+                    <span class="font-extrabold text-xs tracking-tight text-brand-dark">RD Management</span>
+                </div>
+                <div class="flex items-center gap-4 text-[11px] font-bold text-brand-muted">
+                    <a href="#schedule-section" class="hover:text-brand-accent transition-clean">Schedule</a>
+                    <a href="#rules-section" class="hover:text-brand-accent transition-clean">Rules</a>
+                    <button onclick="openContactModal()" class="bg-brand-primary text-white px-3 py-1.5 rounded-full text-[10px] font-bold tracking-wide hover:bg-brand-accent transition-clean">Contact</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- MAIN PORTAL WRAPPER -->
+    <main class="max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 flex-grow flex flex-col justify-center">
+        
+        <!-- HEADER -->
+        <header class="text-center mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-brand-accent font-extrabold text-[10px] tracking-widest uppercase mb-4 border border-brand-primary/20 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-brand-primary"></span>
+                Summer Class 2026
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-brand-dark mb-3">
+                Hello Summer Class
+            </h1>
+            <p class="text-xs sm:text-sm text-brand-muted max-w-md mx-auto leading-relaxed">
+                An ultra-responsive, flat administrative dashboard showcasing updated timings and classroom guidelines.
+            </p>
+        </header>
+
+        <!-- LIVE METRICS BAR (Flat Solid Cards) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <!-- Clock Metric -->
+            <div class="bg-white rounded-xl p-4 border border-[#E5D9F2] flex items-center justify-between shadow-sm transition-clean hover:border-brand-primary">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-[#F1EDF7] flex items-center justify-center text-brand-accent shrink-0">
+                        <i class="fa-regular fa-clock text-base"></i>
+                    </div>
+                    <div>
+                        <p class="text-[9px] uppercase tracking-wider text-brand-muted font-bold">Local Standard Time</p>
+                        <p id="current-time-text" class="text-sm sm:text-base font-bold text-brand-dark">Checking...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Live Status Metric -->
+            <div class="bg-white rounded-xl p-4 border border-[#E5D9F2] flex items-center justify-between shadow-sm transition-clean hover:border-brand-primary">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-[#F1EDF7] flex items-center justify-center text-brand-accent shrink-0">
+                        <i class="fa-solid fa-satellite-dish text-base"></i>
+                    </div>
+                    <div>
+                        <p class="text-[9px] uppercase tracking-wider text-brand-muted font-bold">Ongoing Lecture</p>
+                        <p id="class-status-banner" class="text-sm sm:text-base font-bold text-brand-dark">Checking...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIMETABLE SYSTEM -->
+        <section id="schedule-section" class="bg-white rounded-2xl p-5 sm:p-7 border border-[#E5D9F2] shadow-sm mb-8">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-[#FAF8FD]">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-accent border border-brand-primary/15">
+                        <i class="fa-solid fa-calendar-day text-sm"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-base sm:text-lg font-bold text-brand-dark tracking-tight">Academic Timetable</h2>
+                        <p class="text-[10px] text-brand-muted">1 Month execution schedule</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIMELINE LIST (Solid Layout) -->
+            <div class="relative pl-1 sm:pl-3 space-y-2 before:absolute before:left-[11px] sm:before:left-[19px] before:top-4 before:bottom-4 before:w-[1px] before:bg-[#E5D9F2]">
+                
+                <!-- Row 1 -->
+                <div class="schedule-row group relative flex flex-col md:flex-row md:items-center justify-between p-3 pl-8 sm:pl-10 rounded-lg border border-transparent transition-clean hover:bg-[#F8F6FC] hover:border-[#E5D9F2] cursor-default" data-start="07:00" data-end="08:00">
+                    <div class="absolute left-1.5 sm:left-4 top-[19px] md:top-1/2 md:-translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-secondary transition-clean timeline-node"></div>
+                    <div class="flex items-center gap-3 mb-1.5 md:mb-0">
+                        <span class="text-[10px] font-bold tracking-wide text-brand-accent bg-[#F1EDF7] border border-[#E5D9F2] px-2.5 py-1 rounded-md">
+                            7:00 AM – 8:00 AM
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto">
+                        <span class="font-bold text-brand-dark text-xs sm:text-sm">Home Tuition – Annu</span>
+                        <span class="status-indicator shrink-0"></span>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="schedule-row group relative flex flex-col md:flex-row md:items-center justify-between p-3 pl-8 sm:pl-10 rounded-lg border border-transparent transition-clean hover:bg-[#F8F6FC] hover:border-[#E5D9F2] cursor-default" data-start="08:00" data-end="09:00">
+                    <div class="absolute left-1.5 sm:left-4 top-[19px] md:top-1/2 md:-translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-secondary transition-clean timeline-node"></div>
+                    <div class="flex items-center gap-3 mb-1.5 md:mb-0">
+                        <span class="text-[10px] font-bold tracking-wide text-brand-accent bg-[#F1EDF7] border border-[#E5D9F2] px-2.5 py-1 rounded-md">
+                            8:00 AM – 9:00 AM
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto">
+                        <span class="font-bold text-brand-dark text-xs sm:text-sm">Computer Batch 1</span>
+                        <span class="status-indicator shrink-0"></span>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="schedule-row group relative flex flex-col md:flex-row md:items-center justify-between p-3 pl-8 sm:pl-10 rounded-lg border border-transparent transition-clean hover:bg-[#F8F6FC] hover:border-[#E5D9F2] cursor-default" data-start="09:00" data-end="10:00">
+                    <div class="absolute left-1.5 sm:left-4 top-[19px] md:top-1/2 md:-translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-secondary transition-clean timeline-node"></div>
+                    <div class="flex items-center gap-3 mb-1.5 md:mb-0">
+                        <span class="text-[10px] font-bold tracking-wide text-brand-accent bg-[#F1EDF7] border border-[#E5D9F2] px-2.5 py-1 rounded-md">
+                            9:00 AM – 10:00 AM
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto">
+                        <span class="font-bold text-brand-dark text-xs sm:text-sm">Small Students <span class="text-[10px] font-medium text-brand-muted block md:inline ml-1">(Nursery to Class 6)</span></span>
+                        <span class="status-indicator shrink-0"></span>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="schedule-row group relative flex flex-col md:flex-row md:items-center justify-between p-3 pl-8 sm:pl-10 rounded-lg border border-transparent transition-clean hover:bg-[#F8F6FC] hover:border-[#E5D9F2] cursor-default" data-start="10:00" data-end="11:00">
+                    <div class="absolute left-1.5 sm:left-4 top-[19px] md:top-1/2 md:-translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-secondary transition-clean timeline-node"></div>
+                    <div class="flex items-center gap-3 mb-1.5 md:mb-0">
+                        <span class="text-[10px] font-bold tracking-wide text-brand-accent bg-[#F1EDF7] border border-[#E5D9F2] px-2.5 py-1 rounded-md">
+                            10:00 AM – 11:00 AM
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto">
+                        <span class="font-bold text-brand-dark text-xs sm:text-sm">Spoken English</span>
+                        <span class="status-indicator shrink-0"></span>
+                    </div>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="schedule-row group relative flex flex-col md:flex-row md:items-center justify-between p-3 pl-8 sm:pl-10 rounded-lg border border-transparent transition-clean hover:bg-[#F8F6FC] hover:border-[#E5D9F2] cursor-default" data-start="11:00" data-end="12:00">
+                    <div class="absolute left-1.5 sm:left-4 top-[19px] md:top-1/2 md:-translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-secondary transition-clean timeline-node"></div>
+                    <div class="flex items-center gap-3 mb-1.5 md:mb-0">
+                        <span class="text-[10px] font-bold tracking-wide text-brand-accent bg-[#F1EDF7] border border-[#E5D9F2] px-2.5 py-1 rounded-md">
+                            11:00 AM – 12:00 PM
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto">
+                        <span class="font-bold text-brand-dark text-xs sm:text-sm">Big Students <span class="text-[10px] font-medium text-brand-muted block md:inline ml-1">(Class 7 to 10)</span></span>
+                        <span class="status-indicator shrink-0"></span>
+                    </div>
+                </div>
+
+                <!-- Row 6 -->
+                <div class="schedule-row group relative flex flex-col md:flex-row md:items-center justify-between p-3 pl-8 sm:pl-10 rounded-lg border border-transparent transition-clean hover:bg-[#F8F6FC] hover:border-[#E5D9F2] cursor-default" data-start="12:00" data-end="13:00">
+                    <div class="absolute left-1.5 sm:left-4 top-[19px] md:top-1/2 md:-translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-secondary transition-clean timeline-node"></div>
+                    <div class="flex items-center gap-3 mb-1.5 md:mb-0">
+                        <span class="text-[10px] font-bold tracking-wide text-brand-accent bg-[#F1EDF7] border border-[#E5D9F2] px-2.5 py-1 rounded-md">
+                            12:00 PM – 1:00 PM
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto">
+                        <span class="font-bold text-brand-dark text-xs sm:text-sm">Computer Batch 2</span>
+                        <span class="status-indicator shrink-0"></span>
+                    </div>
+                </div>
+
+                <!-- Row 7 -->
+                <div class="schedule-row group relative flex flex-col md:flex-row md:items-center justify-between p-3 pl-8 sm:pl-10 rounded-lg border border-transparent transition-clean hover:bg-[#F8F6FC] hover:border-[#E5D9F2] cursor-default" data-start="20:00" data-end="21:00">
+                    <div class="absolute left-1.5 sm:left-4 top-[19px] md:top-1/2 md:-translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-secondary transition-clean timeline-node"></div>
+                    <div class="flex items-center gap-3 mb-1.5 md:mb-0">
+                        <span class="text-[10px] font-bold tracking-wide text-brand-accent bg-[#F1EDF7] border border-[#E5D9F2] px-2.5 py-1 rounded-md">
+                            8:00 PM – 9:00 PM
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto">
+                        <span class="font-bold text-brand-dark text-xs sm:text-sm">Computer Batch 3</span>
+                        <span class="status-indicator shrink-0"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLASSROOM COMPLIANCE RULES -->
+        <section id="rules-section" class="bg-white rounded-2xl p-5 sm:p-7 border border-[#E5D9F2] shadow-sm">
+            
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#FAF8FD]">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-accent border border-brand-primary/15">
+                        <i class="fa-solid fa-scale-balanced text-sm"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-base sm:text-lg font-bold text-brand-dark tracking-tight">Class Rules & Regulations</h2>
+                        <p class="text-[10px] text-brand-muted font-medium">Compliance guidelines & disciplinary fines</p>
+                    </div>
+                </div>
+
+                <!-- Custom Flat Pill Tab Bar Selector -->
+                <div class="flex bg-[#F1EDF7] p-1 rounded-lg border border-brand-primary/10 w-full lg:w-auto overflow-x-auto">
+                    <button onclick="switchLanguage('english')" id="tab-english" class="lang-tab flex-1 whitespace-nowrap lg:flex-none px-4 py-1.5 rounded-md text-[10px] font-bold tracking-wide uppercase transition-clean bg-white text-brand-dark shadow-sm">
+                        EN
+                    </button>
+                    <button onclick="switchLanguage('hinglish')" id="tab-hinglish" class="lang-tab flex-1 whitespace-nowrap lg:flex-none px-4 py-1.5 rounded-md text-[10px] font-bold tracking-wide uppercase transition-clean text-brand-muted hover:text-brand-dark">
+                        HN
+                    </button>
+                    <button onclick="switchLanguage('hindi')" id="tab-hindi" class="lang-tab flex-1 whitespace-nowrap lg:flex-none px-4 py-1.5 rounded-md text-[10px] font-bold tracking-wide uppercase transition-clean text-brand-muted hover:text-brand-dark">
+                        HI
+                    </button>
+                </div>
+            </div>
+
+            <!-- RULES LIST PANELS -->
+            
+            <!-- 1. ENGLISH PANEL -->
+            <div id="rules-english" class="lang-panel space-y-3">
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">01</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Polite & Respectful Communication</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">Students must speak politely and respectfully in class. Misbehaving or talking rudely may result in a ₹100 fine.</p>
+                        <span class="inline-block mt-1 px-2 py-0.5 rounded bg-red-50 text-brand-fineRed border border-red-100 text-[9px] font-bold uppercase tracking-wider">
+                            Fine: ₹100
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">02</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Homework & Task Completion</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">All homework and classwork given by the teacher must be completed on time. Incomplete work may result in a ₹100 fine.</p>
+                        <span class="inline-block mt-1 px-2 py-0.5 rounded bg-red-50 text-brand-fineRed border border-red-100 text-[9px] font-bold uppercase tracking-wider">
+                            Fine: ₹100
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">03</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Punctuality Requirements</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">Students must arrive on time. Each class is only 1 hour long, and extra time will not be provided.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">04</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Prior Absence Notice</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">If any student takes leave without informing the teacher, a ₹100 fine may be charged.</p>
+                        <span class="inline-block mt-1 px-2 py-0.5 rounded bg-red-50 text-brand-fineRed border border-red-100 text-[9px] font-bold uppercase tracking-wider">
+                            Fine: ₹100
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">05</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Fixed Timings</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">The class schedule will remain fixed for one month. No time changes will be made.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#FF4A5A]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">06</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Proper Academic Address</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">Inside the classroom, students should address the teacher as “Sir” or “Teacher.” Please maintain a respectful and disciplined classroom environment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. HINGLISH PANEL -->
+            <div id="rules-hinglish" class="lang-panel hidden space-y-3">
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">01</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Anushasan Aur Bhasha</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">Teacher se badtameezi se baat karne par ₹100 fine lagega.</p>
+                        <span class="inline-block mt-1 px-2 py-0.5 rounded bg-red-50 text-brand-fineRed border border-red-100 text-[9px] font-bold uppercase tracking-wider">
+                            Fine: ₹100
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">02</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Work Completion Required</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">Jo work teacher dega, woh complete karna zaroori hai. Work complete na karne par ₹100 fine lagega.</p>
+                        <span class="inline-block mt-1 px-2 py-0.5 rounded bg-red-50 text-brand-fineRed border border-red-100 text-[9px] font-bold uppercase tracking-wider">
+                            Fine: ₹100
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">03</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Punctuality Rule</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">Sab students time par class aayein. Class sirf 1 hour ki hogi, 5 minute extra bhi nahi diya jayega.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">04</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Bina Bataye Chhutti</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">Agar kisi student ne bina bataye chhutti mari, toh ₹100 fine lagega.</p>
+                        <span class="inline-block mt-1 px-2 py-0.5 rounded bg-red-50 text-brand-fineRed border border-red-100 text-[9px] font-bold uppercase tracking-wider">
+                            Fine: ₹100
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">05</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Timings Fixed</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">Ab class timing 1 month tak change nahi hogi.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-red-50/20 border border-[#FF4A5A]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-white border border-[#FF4A5A]/30 flex items-center justify-center font-bold text-xs text-brand-fineRed shrink-0">06</div>
+                    <div class="space-y-1.5 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">Classroom Address & Fine Rules</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">Class ke andar teacher ko sirf <strong class="text-brand-dark font-extrabold">“Sir”</strong> ya <strong class="text-brand-dark font-extrabold">“Teacher”</strong> bolein. <strong class="text-red-600 font-extrabold">“Bhaiya”</strong> ya <strong class="text-red-600 font-extrabold">“Brother”</strong> bolne par 600 utthak-baithak aur ₹100 fine lagega. Kripya class mein disciplined aur respectful environment banaye rakhein.</p>
+                        <span class="inline-block mt-1 px-2.5 py-0.5 rounded bg-red-50 text-brand-fineRed border border-red-100 text-[9px] font-extrabold tracking-wider">
+                            600 UTTHAK-BAITHAK & ₹100 FINE
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. HINDI PANEL -->
+            <div id="rules-hindi" class="lang-panel hidden space-y-3">
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">01</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">सम्मानजनक बातचीत</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">टीचर से बदतमीज़ी से बात करने पर ₹100 जुर्माना लगेगा।</p>
+                        <span class="inline-block mt-1 px-2 py-0.5 rounded bg-red-50 text-brand-fineRed border border-red-100 text-[9px] font-bold uppercase tracking-wider">
+                            जुर्माना: ₹100
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">02</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">काम पूरा करना</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">टीचर जो भी काम देंगे, उसे पूरा करना ज़रूरी है। काम पूरा न करने पर ₹100 जुर्माना लगेगा।</p>
+                        <span class="inline-block mt-1 px-2 py-0.5 rounded bg-red-50 text-brand-fineRed border border-red-100 text-[9px] font-bold uppercase tracking-wider">
+                            जुर्माना: ₹100
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">03</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">समय पर आना</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">सभी छात्र समय पर क्लास में आएँ। क्लास केवल 1 घंटे की होगी, 5 मिनट अतिरिक्त समय भी नहीं मिलेगा।</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">04</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">बिना बताए छुट्टी</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">अगर किसी छात्र ने बिना बताए छुट्टी की, तो ₹100 जुर्माना लगेगा।</p>
+                        <span class="inline-block mt-1 px-2 py-0.5 rounded bg-red-50 text-brand-fineRed border border-red-100 text-[9px] font-bold uppercase tracking-wider">
+                            जुर्माना: ₹100
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-[#FAF8FD]/50 border border-[#E5D9F2]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-[#FAF8FD] border border-[#E5D9F2] flex items-center justify-center font-bold text-xs text-brand-accent shrink-0">05</div>
+                    <div class="space-y-1 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">समय-सारणी</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">अब क्लास का समय 1 महीने तक नहीं बदलेगा।</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 p-3.5 rounded-xl bg-red-50/20 border border-[#FF4A5A]/30 transition-clean hover:bg-[#FAF8FD]">
+                    <div class="w-8 h-8 rounded-lg bg-white border border-[#FF4A5A]/30 flex items-center justify-center font-bold text-xs text-brand-fineRed shrink-0">06</div>
+                    <div class="space-y-1.5 w-full">
+                        <p class="font-bold text-brand-dark text-xs sm:text-sm">शिक्षक के लिए उचित संबोधन नियम</p>
+                        <p class="text-[11px] text-brand-muted leading-relaxed">क्लास के अंदर टीचर को केवल <strong class="text-brand-dark font-extrabold">“Sir”</strong> या <strong class="text-brand-dark font-extrabold">“Teacher”</strong> कहें। <strong class="text-red-600 font-extrabold">“भैया”</strong> या <strong class="text-red-600 font-extrabold">“Brother”</strong> कहने पर 600 उठक-बैठक और ₹100 जुर्माना लगेगा। कृपया क्लास में अनुशासन और सम्मान बनाए रखें।</p>
+                        <span class="inline-block mt-1 px-2.5 py-0.5 rounded bg-red-50 text-brand-fineRed border border-red-100 text-[9px] font-extrabold tracking-wider">
+                            600 उठक-बैठक और ₹100 जुर्माना
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FLOATING FOOTER (Premium rounded card look showcasing deep bottom-rounding) -->
+    <div class="w-full px-4 pb-8">
+        <footer class="max-w-4xl mx-auto bg-white border border-[#E5D9F2] rounded-[36px] sm:rounded-[48px] pt-10 pb-8 px-4 text-center shadow-sm">
+            <div class="max-w-md mx-auto flex flex-col items-center gap-4">
+                <!-- Footer Logo -->
+                <div class="w-11 h-11 rounded-full border border-brand-primary/20 flex items-center justify-center bg-[#FAF8FD]">
+                    <img src="https://i.ibb.co/dJJYjWSw/Gemini-Generated-Image-l22hn4l22hn4l22h.png" alt="RD Management" class="w-8 h-8 rounded-full object-cover">
+                </div>
+                
+                <div class="space-y-1">
+                    <p class="font-extrabold text-sm text-brand-dark">Contact RD Management</p>
+                    <p class="text-[10px] uppercase tracking-wider text-brand-muted font-bold">Admin Portal Support Desk</p>
+                </div>
+                
+                <!-- Contact Trigger Button -->
+                <button onclick="openContactModal()" class="inline-flex items-center justify-center px-6 py-2 rounded-full bg-brand-primary text-white text-xs font-bold tracking-wide hover:bg-brand-accent transition-clean shadow-sm hover:shadow">
+                    Contact Now
+                </button>
+
+                <p class="text-[9px] uppercase tracking-widest text-brand-muted font-semibold mt-4">
+                    © 2026 Summer Class Administration. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- INTERACTIVE ULTRA-PREMIUM CONTACT DIALOG / MODAL (Slide-up from bottom with liquid wave morph animation) -->
+    <div id="contact-modal" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-[#2A2830]/60 backdrop-blur-sm opacity-0 pointer-events-none modal-overlay transition-clean" onclick="closeContactModalOnOuterClick(event)">
+        
+        <!-- Modal Card: Translates from bottom on mobile -->
+        <div class="bg-white rounded-t-3xl sm:rounded-2xl border border-[#E5D9F2] max-w-sm w-full p-6 shadow-2xl modal-container transition-clean" onclick="event.stopPropagation()">
+            
+            <!-- Close Indicator/Bar for Mobile Feel -->
+            <div class="w-12 h-1.5 bg-[#FAF8FD] rounded-full mx-auto mb-4 block sm:hidden"></div>
+            
+            <!-- Close Button -->
+            <div class="flex justify-end mb-1">
+                <button onclick="closeContactModal()" class="text-brand-muted hover:text-brand-dark transition-clean">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <!-- Contact Body -->
+            <div class="text-center space-y-5">
+                
+                <!-- Avatar block with active waving liquid ripple animations -->
+                <div class="relative w-28 h-28 mx-auto flex items-center justify-center">
+                    <!-- Overlapping organic liquid ripple waves -->
+                    <div class="absolute inset-0 border border-brand-primary/40 bg-brand-primary/5 animate-wave-1"></div>
+                    <div class="absolute inset-0 border border-brand-primary/20 bg-brand-primary/5 animate-wave-2"></div>
+                    <div class="absolute inset-0 border border-brand-primary/10 bg-brand-primary/5 animate-wave-3"></div>
+                    
+                    <!-- संजय की इमेज (With fluid wavey-floating animation + organic border morphing) -->
+                    <div class="relative w-20 h-20 shadow-md overflow-hidden animate-float bg-white shrink-0 liquid-avatar-border z-10 p-[2px]">
+                        <div class="w-full h-full rounded-full overflow-hidden">
+                            <img src="https://i.ibb.co/CpH1vsh3/FDFDFDF.png" alt="Sanjay Avatar" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <p class="text-[10px] uppercase tracking-widest text-brand-muted font-extrabold">Support Person</p>
+                    <h3 class="text-xl font-extrabold text-brand-dark">Sanjay</h3>
+                </div>
+
+                <div class="bg-[#F8F6FC] rounded-xl p-3 border border-[#E5D9F2]/60">
+                    <p class="text-[9px] uppercase tracking-wider text-brand-muted font-bold mb-1">Mobile Contact</p>
+                    <a href="tel:9717811898" class="text-lg font-black text-brand-accent tracking-wide hover:underline inline-flex items-center gap-1.5 justify-center">
+                        <i class="fa-solid fa-phone text-xs"></i> 9717811898
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 pt-1">
+                    <a href="tel:9717811898" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-brand-primary text-white text-xs font-bold hover:bg-brand-accent transition-clean">
+                        <i class="fa-solid fa-phone"></i> Call Now
+                    </a>
+                    <a href="https://wa.me/919717811898" target="_blank" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#25D366] text-white text-xs font-bold hover:bg-[#20ba59] transition-clean">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE ENGINE -->
+    <script>
+        // Contact Modal Logic
+        const modal = document.getElementById('contact-modal');
+        
+        function openContactModal() {
+            modal.classList.add('modal-active');
+        }
+
+        function closeContactModal() {
+            modal.classList.remove('modal-active');
+        }
+
+        function closeContactModalOnOuterClick(event) {
+            closeContactModal();
+        }
+
+        // Escape Key closing support
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeContactModal();
+            }
+        });
+
+        // Language Swapping Handler
+        function switchLanguage(lang) {
+            // Hide all lists
+            document.querySelectorAll('.lang-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            // Show target list
+            document.getElementById(`rules-${lang}`).classList.remove('hidden');
+
+            // Reset tab highlights
+            document.querySelectorAll('.lang-tab').forEach(tab => {
+                tab.classList.remove('bg-white', 'text-brand-dark', 'shadow-sm');
+                tab.classList.add('text-brand-muted');
+            });
+
+            // Set current tab focus
+            const activeTab = document.getElementById(`tab-${lang}`);
+            activeTab.classList.add('bg-white', 'text-brand-dark', 'shadow-sm');
+            activeTab.classList.remove('text-brand-muted');
+        }
+
+        // Live Clock Engine & Highlighting Logic
+        function updateLiveScheduler() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            
+            // Format time display
+            const formatH = hours % 12 || 12;
+            const formatM = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('current-time-text').innerText = `${formatH}:${formatM} ${ampm}`;
+
+            // Convert to deciclock representation for timeline scans
+            const decTime = hours + (minutes / 60);
+
+            const rows = document.querySelectorAll('.schedule-row');
+            let liveLabelText = 'No Active Class';
+            let liveClassActive = false;
+
+            rows.forEach(row => {
+                const startTimeStr = row.getAttribute('data-start');
+                const endTimeStr = row.getAttribute('data-end');
+
+                const [startH, startM] = startTimeStr.split(':').map(Number);
+                const [endH, endM] = endTimeStr.split(':').map(Number);
+
+                const decStart = startH + (startM / 60);
+                const decEnd = endH + (endM / 60);
+
+                const statusIndicator = row.querySelector('.status-indicator');
+                const timelineNode = row.querySelector('.timeline-node');
+
+                if (decTime >= decStart && decTime < decEnd) {
+                    row.classList.add('active-row-solid');
+                    
+                    // Activate live node state
+                    timelineNode.classList.remove('bg-brand-secondary');
+                    timelineNode.classList.add('bg-brand-accent', 'scale-125');
+                    
+                    statusIndicator.innerHTML = `
+                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-brand-accent text-white text-[9px] font-extrabold tracking-wider animate-pulse">
+                            • LIVE
+                        </span>
+                    `;
+                    
+                    // Pull class title correctly
+                    const textLabel = row.querySelector('span[class*="text-brand-dark"]');
+                    liveLabelText = textLabel.innerText.split('\n')[0];
+                    liveClassActive = true;
+                } else {
+                    row.classList.remove('active-row-solid');
+                    
+                    // Reset to clean inactive state
+                    timelineNode.classList.add('bg-brand-secondary');
+                    timelineNode.classList.remove('bg-brand-accent', 'scale-125');
+
+                    statusIndicator.innerHTML = '';
+                }
+            });
+
+            // Update status indicator header badge
+            const statusLabel = document.getElementById('class-status-banner');
+            if (liveClassActive) {
+                statusLabel.innerText = liveLabelText;
+                statusLabel.className = "text-sm sm:text-base font-bold text-brand-accent tracking-tight";
+            } else {
+                statusLabel.innerText = "No Live Classes";
+                statusLabel.className = "text-sm sm:text-base font-bold text-brand-muted/70 tracking-tight";
+            }
+        }
+
+        // Initialize Scheduler
+        updateLiveScheduler();
+        setInterval(updateLiveScheduler, 10000);
+    </script>
+</body>
+</html>
